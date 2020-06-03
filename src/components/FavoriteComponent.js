@@ -8,7 +8,8 @@ function RenderMenuItem({ dish, deleteFavorite }) {
     return(
         <Media tag="li">
             <Media left middle>
-                <Media object src={baseUrl + dish.image} alt={dish.name} />
+                
+                <iframe width="560" height="315" src={ dish.url} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title="myframe"></iframe>
             </Media>
             <Media body className="ml-5">
                 <Media heading>{dish.name}</Media>
@@ -56,10 +57,10 @@ const Favorites = (props) => {
                 <div className="row">
                     <Breadcrumb>
                         <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>My Favorites</BreadcrumbItem>
+                        <BreadcrumbItem active>My Courses</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
-                        <h3>My Favorites</h3>
+                        <h3>My Courses</h3>
                         <hr />
                     </div>
                 </div>

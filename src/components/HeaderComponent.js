@@ -65,12 +65,12 @@ class Header extends Component {
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-link" to="/menu">
-                                        <span className="fa fa-list fa-lg"></span> Menu
+                                        <span className="fa fa-list fa-lg"></span> ALL Courese
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-link" to="/favorites">
-                                        <span className="fa fa-heart fa-lg"></span> My Favorites
+                                        <span className="fa fa-heart fa-lg"></span> My Courses
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
@@ -139,6 +139,7 @@ class Header extends Component {
                                 </Label>
                             </FormGroup>
                             <Button type="submit" value="submit" color="primary">Login</Button>
+                            <a href="/signup">Don't Have Acccount?</a>
                         </Form>
                     </ModalBody>
                 </Modal>
