@@ -18,11 +18,11 @@ import { FadeTransform, Fade, Stagger } from 'react-animation-components';
                         <Card>
                             <CardImg top src={baseUrl + dish.image} alt={dish.name} />
                             <CardImgOverlay>
-                                <Button outline color="primary" onClick={() => favorite ? console.log('Already favorite') : postFavorite(dish._id)}>
+                                <Button outline color="primary" onClick={() => favorite ? console.log('Already Enrolled') : postFavorite(dish._id)}>
                                     {favorite ?
-                                        <span className="fa fa-heart"></span>
+                                        <span>Enrolled</span>
                                         : 
-                                        <span className="fa fa-heart-o"></span>
+                                        <span >Enroll</span>
                                     }
                                 </Button>
                             </CardImgOverlay>

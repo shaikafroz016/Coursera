@@ -8,14 +8,14 @@ function RenderMenuItem({ dish, deleteFavorite }) {
     return(
         <Media tag="li">
             <Media left middle>
-                
-                <iframe width="560" height="315" src={ dish.url} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title="myframe"></iframe>
+            <Media width="560" height="315" object src={baseUrl + dish.image} alt={dish.name} />
+               {/* <iframe width="560" height="315" src={ dish.url} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title="myframe"></iframe>*/}
             </Media>
             <Media body className="ml-5">
                 <Media heading>{dish.name}</Media>
                 <p>{dish.description}</p>
                 <Button outline color="danger" onClick={() => deleteFavorite(dish._id)}>
-                    <span className="fa fa-times"></span>
+                    <span className="fa fa-times"></span>DELETE
                 </Button>
             </Media>
         </Media>
@@ -76,7 +76,7 @@ const Favorites = (props) => {
         return(
             <div className="container">
                 <div className="row">
-                    <h4>You have no favorites</h4>
+                    <h4>You have no Courses</h4>
                 </div>
             </div>
         )

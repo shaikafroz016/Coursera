@@ -300,49 +300,45 @@ export const SignupError = (message) => {
     }
 }
 
-export const SignupUser = (creds) => (dispatch) => {
-    // We dispatch requestLogin to kickoff the call to the API
-    dispatch(requestSignup(creds))
+export const SignupUser = (firstname,lastname,email,username,password) => (dispatch) => {
+
+    const newUser = {
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        password:password,
+        username:username
+    }
+    console.log('User ', newUser);
+
 
     return fetch(baseUrl + 'users/signup', {
         method: 'POST',
-        headers: { 
-            'Content-Type':'application/json' 
+        body: JSON.stringify(newUser),
+        headers: {
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify(creds)
+        credentials: 'same-origin'
     })
     .then(response => {
         if (response.ok) {
             return response;
-        } else {
+        }
+        else {
             var error = new Error('Error ' + response.status + ': ' + response.statusText);
             error.response = response;
             throw error;
         }
-        },
-        error => {
-            throw error;
-        })
-    .then(response => response.json())
-    .then(response => {
-        if (response.success) {
-            // If login was successful, set the token in local storage
-            localStorage.setItem('token', response.token);
-            localStorage.setItem('creds', JSON.stringify(creds));
-            // Dispatch the success action
-            dispatch(fetchFavorites());
-            dispatch(receiveLogin(response));
-        }
-        else {
-            var error = new Error('Error ' + response.status);
-            error.response = response;
-            throw error;
-        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
     })
-    .catch(error => dispatch(loginError(error.message)))
-};
-
-
+    .then(response => response.json())
+    .then(response => dispatch(receiveSignup(response)))
+    .catch(error => { console.log('SIGNUP ', error.message);
+         })
+}
 export const requestLogout = () => {
     return {
       type: ActionTypes.LOGOUT_REQUEST
