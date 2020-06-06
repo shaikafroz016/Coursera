@@ -31,7 +31,7 @@ constructor(props) {
      var email= document.getElementById("email").value;
      var username= document.getElementById("username").value;
      var password= document.getElementById("password").value;
-     console.log(username)
+     console.log(firstname,lastname,email,username,password)
     this.props.SignUpUser(firstname,lastname,email,username,password);
     
    }
