@@ -7,7 +7,7 @@ import { baseUrl } from '../shared/baseUrl';
     function RenderMenuItem({ dish, onClick }) {
         return(
             <Card>
-                <Link to={`/menu/${dish._id}`} >
+                <Link to={`/Courses/${dish._id}`} >
                     <CardImg width="100%" src={baseUrl + dish.image} alt={dish.name} />
                     <CardImgOverlay>
                         <CardTitle>{dish.name}</CardTitle>

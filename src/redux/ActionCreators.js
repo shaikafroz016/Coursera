@@ -337,6 +337,7 @@ export const SignupUser = (firstname,lastname,email,username,password) => (dispa
     .then(response => response.json())
     .then(response => dispatch(receiveSignup(response)))
     .catch(error => { console.log('SIGNUP ', error.message);
+     alert('signup succes please login')
          })
 }
 export const requestLogout = () => {

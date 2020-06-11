@@ -1,9 +1,26 @@
-  
+.body{
+  background-image: url("0.jpeg");
+}  
 .row-header{
   margin:0px auto;
   padding:0px auto;
 }
+.bo{
+ 
+  background-image: url("http://mdbootstrap.com/img/Photos/Others/images/91.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: auto;
+  width: auto;
 
+}
+.NAVI{
+color: #0f0f0f;
+}
+.hello{
+background-image: linear-gradient(to right,rgb(238, 197, 197),rgba(106, 181, 185, 0.562));
+}
 .row-content {
   margin:0px auto;
   padding: 50px 0px 50px 0px;
@@ -12,15 +29,19 @@
 }
 
 .footer{
-  background-image:linear-gradient(to right,rgb(238, 197, 197),rgba(106, 181, 185, 0.562)) ;
-  margin:0px auto;
-  padding: 20px;
+  background-image:linear-gradient(to right,rgb(237, 238, 197),rgba(106, 181, 185, 0.562)) ;
+  height: 200px;
+  width: auto;
+
 }
 .jumbotron {
-  padding:25px;
-  margin:0px auto;
-  background-image:linear-gradient(to right,rgb(238, 197, 197),rgba(106, 181, 185, 0.562)) ;
-  color:floralwhite;
+  background-image: url("5.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 200px;
+  width: auto;
+  color:rgb(233, 158, 7);
 }
 
 address{
@@ -53,4 +74,21 @@ address{
   opacity: 0.01;
   transform: translateX(100%);
   transition: all 300ms ease-out;
+}
+
+.card:hover{
+  -webkit-box-shadow: 33px 32px 21px 0px rgba(0,0,0,0.39);
+  -moz-box-shadow: 33px 32px 21px 0px rgba(0,0,0,0.39);
+  box-shadow: 33px 32px 21px 0px rgba(0,0,0,0.39);
+}
+
+.card {
+  
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center center;
+  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.1s;
+  will-change: transform;
+  border: 15px solid white;
 }

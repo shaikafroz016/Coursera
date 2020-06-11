@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { SignupUser } from '../redux/ActionCreators';
-import { Button, Form, FormGroup, Label, Input, Col, FormFeedback } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 class Signup extends Component {
 
@@ -32,8 +32,26 @@ constructor(props) {
      var username= document.getElementById("username").value;
      var password= document.getElementById("password").value;
      console.log(firstname,lastname,email,username,password)
+     if (firstname === "" & lastname==="" & username==="" & password===""){
+         alert("Please fill all the detailes")
+     }
+     else if (firstname===null || firstname===""){  
+        alert("Firstname can't be blank");  
+        return false;  
+      }else if(lastname===null || lastname===""){  
+        alert("last name can't be blank");  
+        return false;  
+        }else if(username===null || username===""){  
+            alert("User name must be atleast 6 charecter");  
+            return false;  
+            }
+      else if(password.length<6){  
+        alert("Password must be at least 6 characters long.");  
+        return false;  
+        }  
+        else{
     this.props.SignUpUser(firstname,lastname,email,username,password);
-    
+        }
    }
    render() {
    return(

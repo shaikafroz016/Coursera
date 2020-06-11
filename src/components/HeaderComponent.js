@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron,
     Button, Modal, ModalHeader, ModalBody,
-    Form, FormGroup, Input, Label } from 'reactstrap';
+    Form, FormGroup, Input, Label, UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem,
+     } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
@@ -42,6 +46,7 @@ class Header extends Component {
     }
 
     render() {
+       
         return(
             <React.Fragment>
                 <Navbar dark expand="md">
@@ -64,12 +69,12 @@ class Header extends Component {
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/menu">
+                                    <NavLink className="nav-link" to="/Courses">
                                         <span className="fa fa-list fa-lg"></span> ALL Courese
                                     </NavLink>
                                 </NavItem>
                                 <NavItem>
-                                    <NavLink className="nav-link" to="/favorites">
+                                    <NavLink className="nav-link" to="/mycourses">
                                         <span className="fa fa-heart fa-lg"></span> My Courses
                                     </NavLink>
                                 </NavItem>
@@ -91,7 +96,25 @@ class Header extends Component {
                                         </Button>
                                         :
                                         <div>
-                                        <div className="navbar-text mr-3">{this.props.auth.user.username}</div>
+                                            <div className="navbar-text mr-3">
+                                           <UncontrolledDropdown nav inNavbar>
+                                            <DropdownToggle nav caret>
+                                            {this.props.auth.user.username}
+                                            </DropdownToggle>
+                                            <DropdownMenu className="hello" right >
+                                                <DropdownItem>
+                                                <NavLink className="nav-link  text-dark"  to="/mycourses">
+                                                    My Courses
+                                                </NavLink>
+                                                </DropdownItem>
+                                                <DropdownItem>
+                                                <NavLink className="nav-link  text-dark"  to="/Courses">
+                                                    All Courses
+                                                </NavLink>
+                                                </DropdownItem>
+                                            </DropdownMenu>
+                                            </UncontrolledDropdown>
+                                            </div>
                                         <Button outline onClick={this.handleLogout}>
                                             <span className="fa fa-sign-out fa-lg"></span> Logout
                                             {this.props.auth.isFetching ?
@@ -108,7 +131,7 @@ class Header extends Component {
                     </div>
                 </Navbar>
                 <Jumbotron>
-                    <div className="container">
+                    <div className="container ">
                         <div className="row row-header">
                             <div className="col-12 col-sm-6">
                                 <h1>Ristorante Con Fusion</h1>
@@ -148,4 +171,5 @@ class Header extends Component {
     }
 }
 
+  
 export default Header;

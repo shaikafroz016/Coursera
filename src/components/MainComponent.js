@@ -10,9 +10,10 @@ import Footer from './FooterComponent';
 import Signup from './SignupComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { postComment, postFeedback, fetchDishes, fetchComments, fetchPromos, fetchLeaders, loginUser, logoutUser, fetchFavorites, postFavorite, deleteFavorite } from '../redux/ActionCreators';
+import { postComment, postFeedback, fetchDishes, fetchComments, fetchPromos, fetchLeaders, loginUser,SignupUser, logoutUser, fetchFavorites, postFavorite, deleteFavorite } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import admin from './adminComponent';
 
 const mapStateToProps = state => {
     return {
@@ -25,6 +26,7 @@ const mapStateToProps = state => {
     }
 }
 
+
 const mapDispatchToProps = (dispatch) => ({
   postComment: (dishId, rating, comment) => dispatch(postComment(dishId, rating, comment)),
   fetchDishes: () => {dispatch(fetchDishes())},
@@ -34,6 +36,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchLeaders: () => dispatch(fetchLeaders()),
   postFeedback: (feedback) => dispatch(postFeedback(feedback)),
   loginUser: (creds) => dispatch(loginUser(creds)),
+  SignupUser: (firstname,lastname,email,username,password) => dispatch(SignupUser(firstname,lastname,email,username,password)),
   logoutUser: () => dispatch(logoutUser()),
   fetchFavorites: () => dispatch(fetchFavorites()),
   postFavorite: (dishId) => dispatch(postFavorite(dishId)),
@@ -109,6 +112,32 @@ class Main extends Component {
       )} />
     );
 
+    const SecureRoute = ({ component: Component, ...rest }) => (
+      <Route {...rest} render={(props) => (
+        this.props.auth.isAuthenticated
+          ? <Redirect to={{
+            pathname: '/home',
+            state: { from: props.location }
+          }} />
+          :<Component {...props} /> 
+          
+      )} />
+    );
+
+    const AdminRoute = ({ component: Component, ...rest }) => (
+      <Route {...rest} render={(props) => (
+        this.props.auth.user.admin ==true
+          ?
+          <Redirect to={{
+            pathname: '/home',
+            state: { from: props.location }
+          }} />
+          :
+          <Component {...props} />
+          
+      )} />
+    );
+
     return (
       <div>
         <Header auth={this.props.auth} 
@@ -119,12 +148,13 @@ class Main extends Component {
           <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
             <Switch>
               <Route path="/home" component={HomePage} />
-              <Route exact path='/aboutus' component={() => <About leaders={this.props.leaders} />} />} />
-              <Route exact path="/menu" component={() => <Menu dishes={this.props.dishes} />} />
-              <Route path="/menu/:dishId" component={DishWithId} />
-              <PrivateRoute exact path="/favorites" component={() => <Favorites favorites={this.props.favorites} deleteFavorite={this.props.deleteFavorite} />} />
-              <Route exact path="/signup" component={()=> <Signup SignupUser={this.props.SignupUser} /> }   />
+              <Route exact path='/aboutus' component={() => <About leaders={this.props.leaders} />} />
+              <Route exact path="/Courses" component={() => <Menu dishes={this.props.dishes} />} />
+              <Route path="/Courses/:dishId" component={DishWithId} />
+              <PrivateRoute exact path="/mycourses" component={() => <Favorites favorites={this.props.favorites} deleteFavorite={this.props.deleteFavorite} />} />
+              <SecureRoute exact path="/signup" component={()=> <Signup SignupUser={this.props.SignupUser} /> }   />
               <Route exact path="/contactus" component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} />
+              <AdminRoute path="/admin" component={admin} />
               <Redirect to="/home" />
             </Switch>
           </CSSTransition>
