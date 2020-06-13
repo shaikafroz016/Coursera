@@ -5,6 +5,7 @@ import Menu from './MenuComponent';
 import Contact from './ContactComponent';
 import DishDetail from './DishdetailComponent';
 import Favorites from './FavoriteComponent';
+import FavoritesDetail from './FavoritedetailComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Signup from './SignupComponent';
@@ -151,6 +152,7 @@ class Main extends Component {
               <Route exact path='/aboutus' component={() => <About leaders={this.props.leaders} />} />
               <Route exact path="/Courses" component={() => <Menu dishes={this.props.dishes} />} />
               <Route path="/Courses/:dishId" component={DishWithId} />
+              <Route path="/mycourses/:dishId" component={DishWithId} />
               <PrivateRoute exact path="/mycourses" component={() => <Favorites favorites={this.props.favorites} deleteFavorite={this.props.deleteFavorite} />} />
               <SecureRoute exact path="/signup" component={()=> <Signup SignupUser={this.props.SignupUser} /> }   />
               <Route exact path="/contactus" component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} />
