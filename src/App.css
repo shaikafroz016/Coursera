@@ -30,7 +30,7 @@ background-image: linear-gradient(to right,rgb(238, 197, 197),rgba(106, 181, 185
 
 .footer{
   background-image:linear-gradient(to right,rgb(237, 238, 197),rgba(106, 181, 185, 0.562)) ;
-  height: 200px;
+  height:auto;
   width: auto;
 
 }
@@ -39,7 +39,7 @@ background-image: linear-gradient(to right,rgb(238, 197, 197),rgba(106, 181, 185
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  height: 200px;
+  height: 250px;
   width: auto;
   color:rgb(233, 158, 7);
 }

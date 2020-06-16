@@ -11,7 +11,7 @@ import Footer from './FooterComponent';
 import Signup from './SignupComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { postComment, postFeedback, fetchDishes, fetchComments, fetchPromos, fetchLeaders, loginUser,SignupUser, logoutUser, fetchFavorites, postFavorite, deleteFavorite } from '../redux/ActionCreators';
+import { postComment, postFeedback, fetchDishes, fetchComments,fetchUrls, fetchPromos, fetchLeaders, loginUser,SignupUser, logoutUser, fetchFavorites, postFavorite, deleteFavorite } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import admin from './adminComponent';
@@ -23,6 +23,7 @@ const mapStateToProps = state => {
       promotions: state.promotions,
       leaders: state.leaders,
       favorites: state.favorites,
+      urls: state.urls,
       auth: state.auth
     }
 }
@@ -40,6 +41,7 @@ const mapDispatchToProps = (dispatch) => ({
   SignupUser: (firstname,lastname,email,username,password) => dispatch(SignupUser(firstname,lastname,email,username,password)),
   logoutUser: () => dispatch(logoutUser()),
   fetchFavorites: () => dispatch(fetchFavorites()),
+  fetchUrls:() => {dispatch(fetchUrls())},
   postFavorite: (dishId) => dispatch(postFavorite(dishId)),
   deleteFavorite: (dishId) => dispatch(deleteFavorite(dishId))
 });
@@ -52,6 +54,8 @@ class Main extends Component {
     this.props.fetchPromos();
     this.props.fetchLeaders();
     this.props.fetchFavorites();
+    this.props.fetchUrls();
+    
   }
 
   render() {
@@ -101,6 +105,24 @@ class Main extends Component {
           />
       );
     }
+
+    const favWithId = ({match}) => {
+      return(
+        this.props.auth.isAuthenticated
+        ?
+        <FavoritesDetail dish={this.props.dishes.dishes.filter((dish) => dish._id === match.params.dishId)[0]}
+          isLoading={this.props.dishes.isLoading}
+          errMess={this.props.dishes.errMess}
+          
+          />
+        :
+        <FavoritesDetail dish={this.props.dishes.dishes.filter((dish) => dish._id === match.params.dishId)[0]}
+          isLoading={this.props.dishes.isLoading}
+          errMess={this.props.dishes.errMess}
+          />
+      );
+    }
+
 
     const PrivateRoute = ({ component: Component, ...rest }) => (
       <Route {...rest} render={(props) => (
@@ -152,8 +174,8 @@ class Main extends Component {
               <Route exact path='/aboutus' component={() => <About leaders={this.props.leaders} />} />
               <Route exact path="/Courses" component={() => <Menu dishes={this.props.dishes} />} />
               <Route path="/Courses/:dishId" component={DishWithId} />
-              <Route path="/mycourses/:dishId" component={DishWithId} />
               <PrivateRoute exact path="/mycourses" component={() => <Favorites favorites={this.props.favorites} deleteFavorite={this.props.deleteFavorite} />} />
+              <Route path="/mycourses/:dishId" component={favWithId} />
               <SecureRoute exact path="/signup" component={()=> <Signup SignupUser={this.props.SignupUser} /> }   />
               <Route exact path="/contactus" component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} />
               <AdminRoute path="/admin" component={admin} />

@@ -7,6 +7,7 @@ import { Loading } from './LoadingComponent';
 
 function RenderMenuItem({ dish, deleteFavorite , onClick}) {
     return(
+        
         <Media tag="li">
             <Card>
                 <Link to={`/mycourses/${dish._id}`} >
@@ -16,6 +17,7 @@ function RenderMenuItem({ dish, deleteFavorite , onClick}) {
                     </CardImgOverlay>
                 </Link>
             </Card>
+
             {/*<Media left middle>
             
                {/* <iframe width="560" height="315" src={ dish.url} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title="myframe"></iframe>
@@ -28,6 +30,7 @@ function RenderMenuItem({ dish, deleteFavorite , onClick}) {
                 </Button>
             </Media>
         </Media>
+        
     );
 }
 
