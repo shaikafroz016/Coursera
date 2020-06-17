@@ -7,7 +7,7 @@ import { Loading } from './LoadingComponent';
 
 function RenderMenuItem({ dish, deleteFavorite , onClick}) {
     return(
-        
+        <div className="col-12 col-md m-1">
         <Media tag="li">
             <Card>
                 <Link to={`/mycourses/${dish._id}`} >
@@ -30,6 +30,7 @@ function RenderMenuItem({ dish, deleteFavorite , onClick}) {
                 </Button>
             </Media>
         </Media>
+        </div>
         
     );
 }
@@ -58,7 +59,7 @@ const Favorites = (props) => {
 
         const favorites = props.favorites.favorites.dishes.map((dish) => {
             return (
-                <div key={dish._id} className="col-12 mt-5">
+                <div className="col-12 col-md m-1" key={dish._id} className="col-12 mt-5">
                     <RenderMenuItem dish={dish} deleteFavorite={props.deleteFavorite} />
                 </div>
             );
@@ -71,12 +72,12 @@ const Favorites = (props) => {
                         <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
                         <BreadcrumbItem active>My Courses</BreadcrumbItem>
                     </Breadcrumb>
-                    <div className="col-12">
+                    <div className="col-12 text-white">
                         <h3>My Courses</h3>
                         <hr />
                     </div>
                 </div>
-                <div className="row">
+                <div className="row text-white">
                     <Media list>
                         {favorites}
                     </Media>

@@ -61,17 +61,17 @@ import { FadeTransform} from 'react-animation-components';
         else if (props.dish != null)        
             return (
                 <div className="container">
-                    <div className="row">
+                    <div className="row text-white">
                         <Breadcrumb>
-                            <BreadcrumbItem><Link to='/Courses'>All Courses</Link></BreadcrumbItem>
+                            <BreadcrumbItem><Link to='/mycourses'>My Courses</Link></BreadcrumbItem>
                             <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
                         </Breadcrumb>
                         <div className="col-12">
-                            <h3>All Lecture's fro{props.dish.name} Happy learning</h3>
+                            <h3>All Lecture's for {props.dish.name} Happy learning!!</h3>
                             <hr />
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row ">
                         <RenderDish dish={props.dish} />
                     </div>
                 </div>

@@ -42,7 +42,7 @@ import { FadeTransform, Fade, Stagger } from 'react-animation-components';
             return(
                 <div className="col-12 col-md-5 m-1">
                     <h4>Comments</h4>
-                    <ul className="list-unstyled">
+                    <ul className="list-unstyled text-white">
                         <Stagger in>
                             {comments.map((comment) => {
                                 return (
@@ -152,7 +152,7 @@ import { FadeTransform, Fade, Stagger } from 'react-animation-components';
         else if (props.dish != null)        
             return (
                 <div className="container">
-                    <div className="row">
+                    <div className="row text-white">
                         <Breadcrumb>
                             <BreadcrumbItem><Link to='/Courses'>All Courses</Link></BreadcrumbItem>
                             <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
@@ -162,7 +162,7 @@ import { FadeTransform, Fade, Stagger } from 'react-animation-components';
                             <hr />
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row ">
                         <RenderDish dish={props.dish} favorite={props.favorite} postFavorite={props.postFavorite} />
                         <RenderComments comments={props.comments}
                             postComment={props.postComment}

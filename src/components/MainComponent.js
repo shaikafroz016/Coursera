@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import { postComment, postFeedback, fetchDishes, fetchComments,fetchUrls, fetchPromos, fetchLeaders, loginUser,SignupUser, logoutUser, fetchFavorites, postFavorite, deleteFavorite } from '../redux/ActionCreators';
 import { actions } from 'react-redux-form';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import Four from './404/404';
 import admin from './adminComponent';
 
 const mapStateToProps = state => {
@@ -171,6 +172,7 @@ class Main extends Component {
           <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
             <Switch>
               <Route path="/home" component={HomePage} />
+              <Route exact path='/404' component={Four}/>
               <Route exact path='/aboutus' component={() => <About leaders={this.props.leaders} />} />
               <Route exact path="/Courses" component={() => <Menu dishes={this.props.dishes} />} />
               <Route path="/Courses/:dishId" component={DishWithId} />
@@ -179,7 +181,7 @@ class Main extends Component {
               <SecureRoute exact path="/signup" component={()=> <Signup SignupUser={this.props.SignupUser} /> }   />
               <Route exact path="/contactus" component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} postFeedback={this.props.postFeedback} />} />
               <AdminRoute path="/admin" component={admin} />
-              <Redirect to="/home" />
+              <Redirect to="/404" />
             </Switch>
           </CSSTransition>
         </TransitionGroup>

@@ -31,24 +31,23 @@ class Contact extends Component {
                         <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
                         <BreadcrumbItem active>Contact Us</BreadcrumbItem>
                     </Breadcrumb>
-                    <div className="col-12">
+                    <div className="col-12 text-white">
                         <h3>Contact Us</h3>
                         <hr />
                     </div>
                 </div>
-                <div className="row row-content">
+                <div className="row row-content text-white">
                     <div className="col-12">
                     <h3>Location Information</h3>
                     </div>
-                    <div className="col-12 col-sm-4 offset-sm-1">
+                    <div className="col-12 col-sm-4 offset-sm-1 text-white">
                             <h5>Our Address</h5>
                             <address>
-                            121, Clear Water Bay Road<br />
-                            Clear Water Bay, Kowloon<br />
-                            HONG KONG<br />
+                            Hyderabad, Telangana<br />
+                            INDIA<br />
                             <i className="fa fa-phone"></i>: +852 1234 5678<br />
                             <i className="fa fa-fax"></i>: +852 8765 4321<br />
-                            <i className="fa fa-envelope"></i>: <a href="mailto:confusion@food.net">confusion@food.net</a>
+                            <i className="fa fa-envelope"></i>: <a href="mailto:shaikafroz990807@gmail.com">shaikafroz990807@gmail.com</a>
                             </address>
                     </div>
                     <div className="col-12 col-sm-6 offset-sm-1">
@@ -58,7 +57,7 @@ class Contact extends Component {
                         <div className="btn-group" role="group">
                             <a role="button" className="btn btn-primary" href="tel:+85212345678"><i className="fa fa-phone"></i> Call</a>
                             <a role="button" className="btn btn-info"><i className="fa fa-skype"></i> Skype</a>
-                            <a role="button" className="btn btn-success" href="mailto:confusion@food.net"><i className="fa fa-envelope-o"></i> Email</a>
+                            <a role="button" className="btn btn-success" href="mailto:shaikafroz990807@gmail.com"><i className="fa fa-envelope-o"></i> Email</a>
                         </div>
                     </div>
                 </div>
@@ -66,7 +65,7 @@ class Contact extends Component {
                     <div className="col-12">
                         <h3>Send us Your Feedback</h3>
                     </div>
-                    <div className="col-12 col-md-9">
+                    <div className="col-12 col-md-9 text-white">
                         <Form model="feedback" onSubmit={(values) => this.handleSubmit(values)}>
                             <Row className="form-group">
                                 <Label htmlFor="firstname" md={2}>First Name</Label>

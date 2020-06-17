@@ -5,21 +5,7 @@ import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl';
 import { Fade, Stagger } from 'react-animation-components';
 
-function RenderLeader({leader}) {
-    return(
-        <Media tag="li">
-            <Media left middle>
-                <Media object src={baseUrl + leader.image} alt={leader.name} />
-            </Media>
-            <Media body className="ml-5">
-                <Media heading>{leader.name}</Media>
-                <p>{leader.designation}</p>
-                <p>{leader.description}</p>
-            </Media>
-        </Media>
-    );
 
-}
 
 function LeaderList(props) {
 
@@ -27,7 +13,7 @@ function LeaderList(props) {
         return (
             <Fade in key={leader._id}>
                 <div className="col-12 mt-2">
-                        <RenderLeader leader={leader} />
+                    Thanks
                 </div>
             </Fade>
         );
@@ -65,16 +51,18 @@ function About(props) {
                     <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                     <BreadcrumbItem active>About Us</BreadcrumbItem>
                 </Breadcrumb>
-                <div className="col-12">
+                <div className="col-12 text-white">
                     <h3>About Us</h3>
                     <hr />
                 </div>                
             </div>
             <div className="row row-content">
-                <div className="col-12 col-md-6">
+                <div className="col-12 col-md-6 text-white">
                     <h2>Our History</h2>
-                    <p>Started in 2010, Ristorante con Fusion quickly established itself as a culinary icon par excellence in Hong Kong. With its unique brand of world fusion cuisine that can be found nowhere else, it enjoys patronage from the A-list clientele in Hong Kong.  Featuring four of the best three-star Michelin chefs in the world, you never know what will arrive on your plate the next time you visit us.</p>
-                    <p>The restaurant traces its humble beginnings to <em>The Frying Pan</em>, a successful chain started by our CEO, Mr. Peter Pan, that featured for the first time the world's best cuisines in a pan.</p>
+                    <p>Courser-S is a world-wide online learning platform founded in 2012 by Stanford computer science professors Andrew Ng and Daphne Koller that offers massive open online courses (MOOC), specializations, and degrees.
+                        Courser-S works with universities and other organizations to offer online courses, specializations, and degrees in a variety of subjects, such as engineering, data science, machine learning, mathematics, business, computer science, digital marketing, humanities, medicine, biology, social sciences, and others.
+                    </p>
+                    <p>As of December 2019, the total number of partners is more than 200 across 29 countries. Course-S mainly works with universities and colleges, but also with corporates and governments. University partners include University of São Paulo in Brazil,[9] University of London[10] in the UK, Indian School of Business of India,[11] Yonsei University in Korea,[12] and institutions like Yale[13], University of Illinois and University of Pennsylvania.[14]</p>
                 </div>
                 <div className="col-12 col-md-5">
                     <Card>
@@ -97,8 +85,7 @@ function About(props) {
                     <Card>
                         <CardBody className="bg-faded">
                             <blockquote className="blockquote">
-                                <p className="mb-0">You better cut the pizza in four pieces because
-                                    I'm not hungry enough to eat six.</p>
+                                <p className="mb-0">Don’t worry about doing things perfectly. If you do, you’ll never get things done.</p>
                                 <footer className="blockquote-footer">Yogi Berra,
                                 <cite title="Source Title">The Wit and Wisdom of Yogi Berra,
                                     P. Pepe, Diversion Books, 2014</cite>
@@ -109,10 +96,7 @@ function About(props) {
                 </div>
             </div>
             <div className="row row-content">
-                <div className="col-12">
-                    <h2>Corporate Leadership</h2>
-                </div>
-                <LeaderList leaders={props.leaders} />
+               <h2> <LeaderList leaders={props.leaders} /></h2>
             </div>
         </div>
     );

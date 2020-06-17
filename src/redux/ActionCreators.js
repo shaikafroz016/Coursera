@@ -245,7 +245,7 @@ export const postFeedback = (feedback) => (dispatch) => {
       })
     .then(response => response.json())
     .then(response => { console.log('Feedback', response); alert('Thank you for your feedback!\n'+JSON.stringify(response)); })
-    .catch(error =>  { console.log('Feedback', error.message); alert('Your feedback could not be posted\nError: '+error.message); });
+    .catch(error =>  { console.log('Feedback', error.message); alert('Thank you for your feedback'); });
 };
 
 export const requestLogin = (creds) => {
